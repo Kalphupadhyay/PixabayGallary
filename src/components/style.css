@@ -1,0 +1,37 @@
+.background {
+  background-image: url("../images/background.jpg");
+  padding: 10rem;
+  background-size: cover;
+  background-position: bottom;
+}
+.heading {
+  font-size: 32px;
+}
+
+.navbar {
+  height: 60px;
+}
+
+.items li {
+  margin: 0 5px;
+}
+.size {
+  height: 212px;
+  width: 400px;
+}
+.contain {
+  max-width: 1800px;
+  margin: 20px auto 10px;
+  padding: 0 20px;
+}
+.description {
+  font-size: 13px;
+  position: absolute;
+  width: 100%;
+  top: 210px;
+  background-image: linear-gradient(to bottom, transparent, black);
+}
+.size:hover + .description {
+  transition: all 0.3s;
+  top: 192px;
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Card from "./components/imageCard";
 import Search from "./components/ImageSearch";
+import NewCard from "./components/newCard";
+import "./components/style.css";
 
 const App = (props) => {
   const [images, setImages] = useState([]);
@@ -19,32 +20,33 @@ const App = (props) => {
   }, [term]);
 
   return (
-    <div className="container mx-auto my-10">
+    <div>
       <Search searchText={(text) => setTerm(text)} />
 
-      {!isloading && images.length === 0 && (
-        <h1 className="text-4xl text-center mx-auto">NO images found</h1>
-      )}
+      <div className=" mx-3 contain">
+        {!isloading && images.length === 0 && (
+          <h1 className="text-4xl text-center mx-auto">NO images found</h1>
+        )}
 
-      {isloading ? (
-        <h1 className="text-6xl text-center mx-auto">Page loading</h1>
-      ) : (
-        <div className="grid grid-cols-3 gap-4">
-          {images.map((image) => {
-            return (
-              <Card
-                key={image.id}
-                image={image}
-                views={image.views}
-                name={image}
-                download={image.downloads}
-                likes={image.likes}
-                user={image.user}
-              />
-            );
-          })}
-        </div>
-      )}
+        {isloading ? (
+          <h1 className="text-6xl text-center mx-auto">Page loading</h1>
+        ) : (
+          <div className="grid grid-cols-4 gap-4 my-10">
+            {images.map((image) => {
+              return (
+                <NewCard
+                  key={image.id}
+                  image={image}
+                  views={image.views}
+                  comment={image.comments}
+                  likes={image.likes}
+                  user={image.user}
+                />
+              );
+            })}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
